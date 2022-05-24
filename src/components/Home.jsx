@@ -1,11 +1,13 @@
 import React from "react";
-import { Button } from "@material-tailwind/react";
+import { Input } from "@material-tailwind/react";
 
 const Home = () => {
   return (
-    <>
-      <Button>home</Button>
-    </>
+    <main className="h-screen bg-[#000C1D]">
+      <div className="py-6 w-80 mx-auto">
+        <Input variant="standard" label="Search" />
+      </div>
+    </main>
   );
 };
 
