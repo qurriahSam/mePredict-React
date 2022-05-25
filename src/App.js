@@ -6,7 +6,7 @@ import SignUp from "./components/SignUp";
 
 function App() {
   return (
-    <main className="h-screen bg-[#000C1D]">
+    <main className="min-h-screen bg-[#000C1D]">
       <MyNav />
       <Routes>
         <Route path="/" element={<Home />} />
