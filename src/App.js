@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import MyNav from "./components/MyNav";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
+import Game from "./components/Game";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/game" element={<Game />} />
       </Routes>
     </main>
   );
