@@ -1,5 +1,6 @@
 import React from "react";
 import { Input } from "@material-tailwind/react";
+import Games from "./Games";
 
 const Home = () => {
   return (
@@ -7,6 +8,7 @@ const Home = () => {
       <div className="py-6 w-80 mx-auto">
         <Input variant="standard" label="Search" />
       </div>
+      <Games />
     </main>
   );
 };
