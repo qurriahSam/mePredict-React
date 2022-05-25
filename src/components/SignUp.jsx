@@ -31,6 +31,10 @@ const SignUp = () => {
             </Button>
           </div>
         </form>
+        <Typography>
+          Already have an account?
+          <Typography as="a">Sign In</Typography>
+        </Typography>
       </div>
     </div>
   );
