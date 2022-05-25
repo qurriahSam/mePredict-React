@@ -3,13 +3,16 @@ import { Input } from "@material-tailwind/react";
 import Games from "./Games";
 
 const Home = () => {
+  // fetch games
+  // create state to save fetched games
+  // loop through sending data as props to games component
   return (
-    <main className="h-screen bg-[#000C1D]">
+    <>
       <div className="py-6 w-80 mx-auto">
-        <Input variant="standard" label="Search" />
+        <Input variant="standard" label="Search" className="text-white" />
       </div>
       <Games />
-    </main>
+    </>
   );
 };
 
