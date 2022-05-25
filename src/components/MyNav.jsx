@@ -4,7 +4,7 @@ import logo from "../assets/logo.png";
 
 const MyNav = () => {
   return (
-    <Navbar className="bg-[#40c50f]" fullWidth={true}>
+    <Navbar className="bg-[#44ff00]" fullWidth={true}>
       <div className="container flex justify-between items-center">
         <Typography className="uppercase font-bold flex">
           <img className="w-14 pr-2" src={logo} />
