@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import { Input } from "@material-tailwind/react";
+import React, { useState } from "react";
+import Search from "./Search";
 import Games from "./Games";
 
 import { Link } from "react-router-dom";
 
 const Home = ({ games }) => {
+  const [search, setSearch] = useState("");
   // fetch games
   // create state to save fetched games
   // loop through sending data as props to games component
@@ -46,19 +47,27 @@ const Home = ({ games }) => {
     
   }, []); */
 
-  const showGames = games.map((game) => (
-    <Link to={`${game.fixture.id}`} key={game.fixture.id}>
-      <Games game={game} />
-    </Link>
-  ));
+  const showGames = games
+    .filter((game) => {
+      if (search === "") {
+        return game;
+      } else if (game.teams.home.name.toLowerCase().includes(search.toLowerCase())) {
+        return game;
+      } else if (game.teams.away.name.toLowerCase().includes(search.toLowerCase())) {
+        return game;
+      }
+    })
+    .map((game) => (
+      <Link to={`${game.fixture.id}`} key={game.fixture.id}>
+        <Games game={game} />
+      </Link>
+    ));
 
   const loadGames = games.length === 0 ? <div>Loading</div> : showGames;
 
   return (
     <>
-      <div className="py-6 w-80 mx-auto">
-        <Input variant="standard" label="Search" className="text-white" />
-      </div>
+      <Search search={search} setSearch={setSearch} />
       {loadGames}
     </>
   );
