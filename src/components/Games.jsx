@@ -1,14 +1,23 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Typography } from "@material-tailwind/react";
 
-const Games = () => {
+const Games = ({
+  game: {
+    fixture: { id },
+    teams,
+  },
+}) => {
   return (
-    <div className="container mx-auto px-6 py-2.5 max-w-screen-sm flex justify-center bg-white">
-      <Typography className="font-medium">Guyaquail</Typography>
-      <img className="w-8" src="https://media.api-sports.io/football/teams/16477.png" />
+    <div
+      id={id.toString()}
+      className="container mt-3 mx-auto px-6 py-2.5 max-w-screen-sm flex justify-center bg-white"
+    >
+      <Typography className="font-medium">{teams.home.name}</Typography>
+      <img className="w-8" src={teams.home.logo} />
       <Typography className="font-medium px-3"> - </Typography>
-      <img className="w-8" src="https://media.api-sports.io/football/teams/1150.png" />
-      <Typography className="font-medium">Chicago</Typography>
+      <img className="w-8" src={teams.away.logo} />
+      <Typography className="font-medium">{teams.away.name}</Typography>
     </div>
   );
 };
