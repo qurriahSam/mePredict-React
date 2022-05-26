@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography, Input, Button } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   return (
@@ -23,7 +24,12 @@ const SignIn = () => {
             </Button>
           </div>
 
-          <Typography as="a">Sign In</Typography>
+          <Typography>
+            Dont have an account?{" "}
+            <Link to="/signup">
+              <span className="text-[#5e6eff]">Sign Up</span>
+            </Link>{" "}
+          </Typography>
         </form>
       </div>
     </div>
