@@ -1,11 +1,11 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { Typography } from "@material-tailwind/react";
 
-const Prediction = () => {
+const Prediction = ({ score: { home, likes, away } }) => {
   const [like, setLike] = useState(false);
-
   const handleLike = () => setLike(!like);
 
   return (
@@ -17,13 +17,12 @@ const Prediction = () => {
             className={like ? "text-[#44ff00]" : "text-white"}
             onClick={handleLike}
           />
-          <span className="text-white pl-2">2</span>
+          <span className="text-white pl-2">{like ? likes + 1 : likes - 1}</span>
         </div>
-
         <Typography color="white">
-          <span>1</span>
+          <span>{home}</span>
           <span>-</span>
-          <span>3</span>
+          <span>{away}</span>
         </Typography>
       </div>
     </>

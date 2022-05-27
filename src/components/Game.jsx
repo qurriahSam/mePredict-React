@@ -4,12 +4,16 @@ import { Typography } from "@material-tailwind/react";
 import Prediction from "./Prediction";
 import PredictForm from "./PredictForm";
 import { useParams } from "react-router-dom";
+import { getScores } from "../scores";
 
 const Game = ({ games }) => {
   const params = useParams();
   const { gameId } = params;
+  const scores = getScores();
 
-  const game = games.find((game) => game.fixture.id === parseInt(gameId));
+  const predictions = scores.map((score) => <Prediction key={score.id} score={score} />);
+
+  const game = games.response.find((game) => game.fixture.id === parseInt(gameId));
   console.log(game);
   return (
     <>
@@ -20,9 +24,7 @@ const Game = ({ games }) => {
         <img className="w-8" src={game.teams.away.logo} />
         <Typography className="font-medium">{game.teams.away.name}</Typography>
       </div>
-      <div className="grid grid-cols-4 gap-4 max-w-2xl mt-24 mx-auto">
-        <Prediction />
-      </div>
+      <div className="grid grid-cols-4 gap-4 max-w-2xl mt-24 mx-auto">{predictions}</div>
       <PredictForm />
     </>
   );

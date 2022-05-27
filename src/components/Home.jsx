@@ -2,11 +2,12 @@
 import React, { useState } from "react";
 import Search from "./Search";
 import Games from "./Games";
-
+import { useAuth } from "./firebase";
 import { Link } from "react-router-dom";
 
 const Home = ({ games }) => {
   const [search, setSearch] = useState("");
+  const currentUser = useAuth();
   // fetch games
   // create state to save fetched games
   // loop through sending data as props to games component
@@ -47,7 +48,7 @@ const Home = ({ games }) => {
     
   }, []); */
 
-  const showGames = games
+  const showGames = games.response
     .filter((game) => {
       if (search === "") {
         return game;
@@ -67,6 +68,11 @@ const Home = ({ games }) => {
 
   return (
     <>
+      {currentUser ? (
+        <div className="text-white">logged in as: {currentUser.email}</div>
+      ) : (
+        <div className="text-white">Not logged</div>
+      )}
       <Search search={search} setSearch={setSearch} />
       {loadGames}
     </>

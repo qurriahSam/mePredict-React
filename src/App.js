@@ -8,12 +8,12 @@ import Game from "./components/Game";
 import { todayGames } from "./data";
 
 function App() {
-  // fetch games
-  // create state to save fetched games
-  // loop through sending data as props to games component
-  //const [games, setGames] = useState([]);
+  const games = todayGames();
+  /*   const [games, setGames] = useState([]);
+  console.log(games.response);
+  console.log(games);
 
-  /*   const getCurrentDate = () => {
+  const getCurrentDate = () => {
     const todayCalender = new Date();
     const date = todayCalender.getDate().toString();
     const month = (() =>
@@ -24,9 +24,9 @@ function App() {
 
     return `${year}-${month}-${date}`;
   };
-  const today = getCurrentDate(); */
+  const today = getCurrentDate();
 
-  /*   useEffect(() => {
+  useEffect(() => {
     const getGames = async () => {
       try {
         const response = await fetch(
@@ -45,11 +45,7 @@ function App() {
       }
     };
     getGames();
-    
   }, []); */
-
-  const currentGames = todayGames();
-  const games = currentGames.response;
 
   return (
     <main className="min-h-screen bg-[#000C1D]">
