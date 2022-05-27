@@ -1,5 +1,12 @@
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA96uZJA4_keQpOEmsK5t8yh1XYRoDd0Cg",
@@ -13,6 +20,22 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
 
-export { auth };
+const auth = getAuth();
+
+export function signup(email, password) {
+  return createUserWithEmailAndPassword(auth, email, password);
+}
+
+export function logout() {
+  return signOut(auth);
+}
+
+export function useAuth() {
+  const [currentUser, setCurrentUser] = useState();
+  useEffect(() => {
+    const unSub = onAuthStateChanged(auth, (user) => setCurrentUser(user));
+    return unSub;
+  }, []);
+  return currentUser;
+}
