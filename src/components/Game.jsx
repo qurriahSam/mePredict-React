@@ -13,7 +13,7 @@ const Game = ({ games }) => {
 
   const predictions = scores.map((score) => <Prediction key={score.id} score={score} />);
 
-  const game = games.response.find((game) => game.fixture.id === parseInt(gameId));
+  const game = games.find((game) => game.fixture.id === parseInt(gameId));
   console.log(game);
   return (
     <>
