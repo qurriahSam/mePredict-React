@@ -1,17 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import MyNav from "./components/MyNav";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import MyNav from "./components/MyNav";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import Game from "./components/Game";
-import { todayGames } from "./data";
+//import { todayGames } from "./data";
 
 function App() {
-  const games = todayGames();
-  /*   const [games, setGames] = useState([]);
-  console.log(games.response);
-  console.log(games);
+  const [games, setGames] = useState([]);
 
   const getCurrentDate = () => {
     const todayCalender = new Date();
@@ -38,14 +35,14 @@ function App() {
             },
           }
         );
-        const games = await response.json();
-        setGames(games);
+        const todayGames = await response.json();
+        setGames(todayGames.response);
       } catch (error) {
         alert("gameFetchError", error);
       }
     };
     getGames();
-  }, []); */
+  }, []);
 
   return (
     <main className="min-h-screen bg-[#000C1D]">
