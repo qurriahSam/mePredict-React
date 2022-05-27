@@ -8,47 +8,8 @@ import { Link } from "react-router-dom";
 const Home = ({ games }) => {
   const [search, setSearch] = useState("");
   const currentUser = useAuth();
-  // fetch games
-  // create state to save fetched games
-  // loop through sending data as props to games component
-  //const [games, setGames] = useState([]);
 
-  /*   const getCurrentDate = () => {
-    const todayCalender = new Date();
-    const date = todayCalender.getDate().toString();
-    const month = (() =>
-      todayCalender.getMonth() + 1 < 10
-        ? `0${(todayCalender.getMonth() + 1).toString()}`
-        : todayCalender.getMonth() + 1)();
-    const year = todayCalender.getFullYear().toString();
-
-    return `${year}-${month}-${date}`;
-  };
-  const today = getCurrentDate(); */
-
-  /*   useEffect(() => {
-    const getGames = async () => {
-      try {
-        const response = await fetch(
-          `https://v3.football.api-sports.io/fixtures?date=${today}&status=NS`,
-          {
-            headers: {
-              "x-rapidapi-key": "44db5dfec8b39bbd7f73002a79d90313",
-              "x-rapidapi-host": "v3.football.api-sports.io",
-            },
-          }
-        );
-        const games = await response.json();
-        setGames(games);
-      } catch (error) {
-        alert("gameFetchError", error);
-      }
-    };
-    getGames();
-    
-  }, []); */
-
-  const showGames = games.response
+  const showGames = games
     .filter((game) => {
       if (search === "") {
         return game;
@@ -64,12 +25,18 @@ const Home = ({ games }) => {
       </Link>
     ));
 
-  const loadGames = games.length === 0 ? <div>Loading</div> : showGames;
-
+  const loadGames =
+    games.length === 0 ? (
+      <div className="text-white text-center min-h-screen flex justify-center align-middle">
+        Loading Games
+      </div>
+    ) : (
+      showGames
+    );
   return (
     <>
       {currentUser ? (
-        <div className="text-white">logged in as: {currentUser.email}</div>
+        <div className="text-white">logged in as: {currentUser.email} </div>
       ) : (
         <div className="text-white">Not logged</div>
       )}
