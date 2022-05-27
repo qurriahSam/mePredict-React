@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Typography, Input, Button } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signup } from "./firebase";
 
 const SignUp = () => {
@@ -10,6 +10,7 @@ const SignUp = () => {
     password: "",
     confirmPassword: "",
   });
+  const navigate = useNavigate();
 
   const handleCredentials = (e) => {
     const key = e.target.name;
@@ -24,6 +25,7 @@ const SignUp = () => {
       const sendCredentials = async () => {
         try {
           await signup(email, password);
+          navigate("/");
         } catch (error) {
           alert(error);
         }
