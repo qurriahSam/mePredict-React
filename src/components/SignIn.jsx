@@ -1,22 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography, Input, Button } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "./firebase";
 
 const SignIn = () => {
+  const [logins, setLogins] = useState({
+    email: "",
+    password: "",
+  });
+  let navigate = useNavigate();
+
+  const handleLogins = (e) => {
+    const key = e.target.name;
+    const value = e.target.value;
+    setLogins({ ...logins, [key]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { email, password } = logins;
+
+    const sendCredentials = async () => {
+      try {
+        await login(email, password);
+        navigate("/");
+      } catch (error) {
+        alert(error);
+      }
+    };
+    sendCredentials();
+  };
+
   return (
     <div className="text-white">
       <Typography variant="h2" className="text-center pt-12">
         Sign In
       </Typography>
       <div className="mt-8 w-96 mx-auto p-10">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="pb-5">
             <Typography>Email:</Typography>
-            <Input label="email" type="email" className="mb-4 text-[#fff]" />
+            <Input
+              name="email"
+              type="email"
+              className="mb-4 text-[#fff]"
+              value={logins.email}
+              onChange={handleLogins}
+            />
           </div>
           <div className="pb-5">
             <Typography>Password:</Typography>
-            <Input label="password" type="password" className="mb-4 text-[#fff]" />
+            <Input
+              name="password"
+              type="password"
+              className="mb-4 text-[#fff]"
+              value={logins.password}
+              onChange={handleLogins}
+            />
           </div>
           <div className="grid">
             <Button ripple={true} type="submit" className="bg-[#44ff00] px-14 place-self-center">
