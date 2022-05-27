@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# MePredict
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Content
 
-## Available Scripts
+- [Description](#description)
+- [Screenshot](#screenshot)
+- [Installation](#install-requirements)
+- [Technology Used](#technology)
+- [License](#license)
+- [Authors Info](#authors-Info)
 
-In the project directory, you can run:
+## Description
 
-### `npm start`
+This web app gives football fans a platform to share their football predictions.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Screenshot
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# <p align=center><img src = "./public/Screenshot.png" width=700px></p>
 
-### `npm test`
+## Install Requirements
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Computer
 
-### `npm run build`
+- Internet Access
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Terminal
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Npm
 
-### `npm run eject`
+## Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+On your computer open terminal and run:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    $ git clone https://github.com/qurriahSam/mePredict.git
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    $ cd mePredict
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    $ npm install
 
-## Learn More
+    $ npm start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[Go Back to the top](#MePredict)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Technology
 
-### Code Splitting
+- Semantic HTML5 Markup - Has been used to build the structure of the page.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- CSS Custom properties - Has been used to style the landing page.
 
-### Analyzing the Bundle Size
+- JavaScript - Has been used to create the business logic.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Tailwind CSS - Has been used for styling the navbar and other elements on the landingpage.
 
-### Making a Progressive Web App
+- ReactJS - Has een used to create components of the web app
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Links
 
-### Advanced Configuration
+- Live Site URL: [MePredict](https://mepredict.vercel.app/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+[Go Back to the top](#MePredict)
 
-### Deployment
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+[MIT](./LICENSE) License.
 
-### `npm run build` fails to minify
+[Go Back to the top](#MePredict)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Authors Info
+
+Linked - [Sam Kuria](https://www.linkedin.com/in/sam-kuria-0904b01a1)
+
+[Go Back to the top](#MePredict)
