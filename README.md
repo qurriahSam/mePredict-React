@@ -57,7 +57,7 @@ On your computer open terminal and run:
 
 ## Links
 
-- Live Site URL: [MePredict](https://mepredict.vercel.app/)
+- Live Site URL: [MePredict](https://mepredict-react.vercel.app/)
 
 [Go Back to the top](#MePredict)
 
