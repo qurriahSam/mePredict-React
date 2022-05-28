@@ -6,7 +6,12 @@ import { Typography } from "@material-tailwind/react";
 
 const Prediction = ({ score: { home, likes, away } }) => {
   const [like, setLike] = useState(false);
-  const handleLike = () => setLike(!like);
+  const [likesCount, setLikesCount] = useState(likes);
+
+  const handleLike = () => {
+    setLike(!like);
+    like ? setLikesCount((likes) => likes - 1) : setLikesCount((likes) => likes + 1);
+  };
 
   return (
     <>
@@ -17,7 +22,7 @@ const Prediction = ({ score: { home, likes, away } }) => {
             className={like ? "text-[#44ff00]" : "text-white"}
             onClick={handleLike}
           />
-          <span className="text-white pl-2">{like ? likes + 1 : likes - 1}</span>
+          <span className="text-white pl-2">{likesCount}</span>
         </div>
         <Typography color="white">
           <span>{home}</span>
