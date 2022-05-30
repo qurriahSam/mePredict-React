@@ -15,7 +15,7 @@ const Prediction = ({ score: { home, likes, away } }) => {
 
   return (
     <>
-      <div className="border-[#44ff00] border-2  p-2 flex justify-around">
+      <div className="border-[#44ff00] border-2  p-3 flex justify-around">
         <div>
           <FontAwesomeIcon
             icon={faThumbsUp}
