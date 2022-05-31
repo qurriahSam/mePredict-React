@@ -9,3 +9,7 @@ let scores = [
 export const getScores = () => {
   return scores;
 };
+
+export const addPrediction = (prediction) => {
+  scores.push({ ...prediction, id: scores.length + 1, likes: 0 });
+};
