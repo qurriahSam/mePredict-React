@@ -16,10 +16,10 @@ const MyNav = () => {
   }
 
   return (
-    <Navbar className="bg-[#44ff00]" fullWidth={true}>
-      <div className="container flex justify-between items-center">
+    <Navbar className="bg-[#44ff00] justify-center" fullWidth={true}>
+      <div className="container flex justify-between">
         <Link to="/">
-          <Typography className="uppercase font-bold flex">
+          <Typography className="uppercase font-bold flex pt-2">
             <img className="w-14 pr-2" src={logo} />
             mepredict
           </Typography>

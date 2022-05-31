@@ -17,14 +17,19 @@ const Game = ({ games }) => {
   console.log(game);
   return (
     <>
-      <div className="container mx-auto px-6 py-2.5 max-w-lg mt-24 flex justify-center bg-white">
-        <Typography className="font-medium">{game.teams.home.name}</Typography>
-        <img className="w-8" src={game.teams.home.logo} />
-        <Typography className="font-medium px-3"> - </Typography>
-        <img className="w-8" src={game.teams.away.logo} />
-        <Typography className="font-medium">{game.teams.away.name}</Typography>
+      <div className="container mx-auto px-2">
+        <div className="container mx-auto px-6 py-2.5 max-w-lg mt-24 flex justify-center bg-white">
+          <Typography className="font-medium">{game.teams.home.name}</Typography>
+          <img className="w-8" src={game.teams.home.logo} />
+          <Typography className="font-medium px-3"> - </Typography>
+          <img className="w-8" src={game.teams.away.logo} />
+          <Typography className="font-medium">{game.teams.away.name}</Typography>
+        </div>
       </div>
-      <div className="grid grid-cols-4 gap-4 max-w-2xl mt-24 mx-auto">{predictions}</div>
+
+      <div className="grid sm:grid-cols-3 max-w-xs sm:max-w-md px-3 md:grid-cols-4 gap-4 md:max-w-2xl mt-24 mx-auto">
+        {predictions}
+      </div>
       <PredictForm />
     </>
   );

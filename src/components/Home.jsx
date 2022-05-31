@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Search from "./Search";
 import Games from "./Games";
 import { useAuth } from "./firebase";
-import { Link } from "react-router-dom";
 
 const Home = ({ games }) => {
   const [search, setSearch] = useState("");
@@ -19,11 +18,7 @@ const Home = ({ games }) => {
         return game;
       }
     })
-    .map((game) => (
-      <Link to={`${game.fixture.id}`} key={game.fixture.id}>
-        <Games game={game} />
-      </Link>
-    ));
+    .map((game) => <Games game={game} key={game.fixture.id} />);
 
   const loadGames =
     games.length === 0 ? (
@@ -41,7 +36,7 @@ const Home = ({ games }) => {
         <div className="text-white">Not logged</div>
       )}
       <Search search={search} setSearch={setSearch} />
-      {loadGames}
+      <div className="container mx-auto px-2">{loadGames}</div>
     </>
   );
 };
