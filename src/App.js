@@ -13,13 +13,14 @@ function App() {
   const getCurrentDate = () => {
     const todayCalender = new Date();
     const date = todayCalender.getDate().toString();
+    const finalDate = date.length === 1 ? "0" + date : date;
     const month = (() =>
       todayCalender.getMonth() + 1 < 10
         ? `0${(todayCalender.getMonth() + 1).toString()}`
         : todayCalender.getMonth() + 1)();
     const year = todayCalender.getFullYear().toString();
 
-    return `${year}-${month}-${date}`;
+    return `${year}-${month}-${finalDate}`;
   };
   const today = getCurrentDate();
 
