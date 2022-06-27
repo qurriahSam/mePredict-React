@@ -3,6 +3,8 @@ import { Navbar, Typography, Button } from "@material-tailwind/react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { useAuth, logout } from "./firebase";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const MyNav = () => {
   const currentUser = useAuth();
@@ -25,9 +27,12 @@ const MyNav = () => {
           </Typography>
         </Link>
         {currentUser ? (
-          <Button variant="text" className="text-[#fff]" size="md" onClick={handleLogout}>
-            Logout
-          </Button>
+          <div>
+            <FontAwesomeIcon icon={faUser} className="cursor-pointer" />
+            <Button variant="text" className="text-[#fff] ml-5" size="md" onClick={handleLogout}>
+              Logout
+            </Button>
+          </div>
         ) : (
           <Link to="/signin">
             <Button variant="text" className="text-[#fff]" size="md">
