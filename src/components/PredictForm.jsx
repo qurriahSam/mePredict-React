@@ -8,7 +8,9 @@ import {
   Button,
   Input,
 } from "@material-tailwind/react";
+import { useAuth } from "./firebase";
 import { addPrediction } from "../scores";
+import { useNavigate } from "react-router-dom";
 
 const PredictForm = () => {
   const [open, setOpen] = useState(false);
@@ -16,8 +18,10 @@ const PredictForm = () => {
     home: "",
     away: "",
   });
+  const auth = useAuth();
+  let navigate = useNavigate();
 
-  const handleOpen = () => setOpen(!open);
+  const handleOpen = () => auth ? setOpen(!open) : navigate("/signin");
 
   const handlePrediction = (e) => {
     const key = e.target.name;
