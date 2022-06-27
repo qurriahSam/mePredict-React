@@ -37,7 +37,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="text-white">
+    <div className="text-white pt-12">
       <Typography variant="h2" className="text-center pt-12">
         Sign Up
       </Typography>
