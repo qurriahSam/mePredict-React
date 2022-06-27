@@ -29,7 +29,7 @@ const Home = ({ games }) => {
       showGames
     );
   return (
-    <>
+    <div className="p-12">
       {currentUser ? (
         <div className="text-white">logged in as: {currentUser.email} </div>
       ) : (
@@ -37,7 +37,7 @@ const Home = ({ games }) => {
       )}
       <Search search={search} setSearch={setSearch} />
       <div className="container mx-auto px-2">{loadGames}</div>
-    </>
+    </div>
   );
 };
 
