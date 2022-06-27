@@ -18,7 +18,7 @@ const MyNav = () => {
   }
 
   return (
-    <Navbar className="bg-[#44ff00] justify-center" fullWidth={true}>
+    <Navbar className="bg-[#44ff00] justify-center fixed top-0" fullWidth={true}>
       <div className="container flex justify-between">
         <Link to="/">
           <Typography className="uppercase font-bold flex pt-2">
@@ -28,7 +28,9 @@ const MyNav = () => {
         </Link>
         {currentUser ? (
           <div>
-            <FontAwesomeIcon icon={faUser} className="cursor-pointer" />
+            <Link to="/profile">
+              <FontAwesomeIcon icon={faUser} className="cursor-pointer hover:animate-pulse" />
+            </Link>
             <Button variant="text" className="text-[#fff] ml-5" size="md" onClick={handleLogout}>
               Logout
             </Button>
