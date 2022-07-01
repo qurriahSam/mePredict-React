@@ -31,8 +31,27 @@ const SignUp = () => {
         }
       };
       sendCredentials();
+      signup_to_db(email);
     } else {
       alert("passwords do not match");
+    }
+  };
+
+  const signup_to_db = async (email) => {
+    try {
+      const url = "http://localhost:9292/mepredict/newuser";
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({email: email})
+      });
+      const user = await response.json();
+      console.log("created in db", user);
+    } catch (error) {
+      console.log("signup error", error);
     }
   };
 

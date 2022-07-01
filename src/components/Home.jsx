@@ -7,7 +7,7 @@ import { useAuth } from "./firebase";
 const Home = ({ games }) => {
   const [search, setSearch] = useState("");
   const currentUser = useAuth();
-
+ 
   const showGames = games
     .filter((game) => {
       if (search === "") {

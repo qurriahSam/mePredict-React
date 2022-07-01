@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { useState } from "react";
 import {
@@ -9,10 +10,9 @@ import {
   Input,
 } from "@material-tailwind/react";
 import { useAuth } from "./firebase";
-import { addPrediction } from "../scores";
 import { useNavigate } from "react-router-dom";
 
-const PredictForm = () => {
+const PredictForm = ({addPrediction}) => {
   const [open, setOpen] = useState(false);
   const [prediction, setPrediction] = useState({
     home: "",
@@ -30,6 +30,7 @@ const PredictForm = () => {
   };
 
   const handleSubmit = (e) => {
+    console.log("submitting");
     e.preventDefault();
 
     const { home, away } = prediction;
@@ -37,7 +38,7 @@ const PredictForm = () => {
     if (home.length === 0 || away.length === 0) {
       alert("fill all fields");
     } else {
-      addPrediction({ home: parseInt(home), away: parseInt(away) });
+      addPrediction(prediction);
       console.log("done");
     }
   };
@@ -51,6 +52,7 @@ const PredictForm = () => {
       </div>
       <Dialog open={open} handler={handleOpen}>
         <DialogHeader>Score:</DialogHeader>
+        
         <DialogBody>
           <form className="flex justify-center" onSubmit={handleSubmit}>
             <Input
@@ -72,7 +74,7 @@ const PredictForm = () => {
           </form>
         </DialogBody>
         <DialogFooter>
-          <Button type="submit" variant="gradient" className="bg-[#44ff00]">
+          <Button type="submit" variant="gradient" className="bg-[#44ff00]" onClick={handleSubmit}>
             <span>Submit</span>
           </Button>
         </DialogFooter>

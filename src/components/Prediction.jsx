@@ -3,14 +3,62 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { Typography } from "@material-tailwind/react";
+import { useAuth } from "./firebase";
+import { useNavigate } from "react-router-dom";
 
-const Prediction = ({ score: { home, likes, away } }) => {
+const Prediction = ({ score: { home, likes, away, id } }) => {
+
   const [like, setLike] = useState(false);
   const [likesCount, setLikesCount] = useState(likes);
+  const currentUser = useAuth();
+  let navigate = useNavigate();
+  let logged = "";
+  
+  if (currentUser) {
+    logged = currentUser.email;
+  }
+  console.log(logged);
+
 
   const handleLike = () => {
-    setLike(!like);
-    like ? setLikesCount((likes) => likes - 1) : setLikesCount((likes) => likes + 1);
+    if (currentUser) {
+      logged = currentUser.email;
+      setLike(!like);
+      like ?  deleteLike() : addLike();
+    } else {
+      navigate("/signin");
+    }
+  };
+
+  const addLike = async () => {
+    try {
+      const response = await fetch(`http://localhost:9292/prediction/like/${id}`,{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "accept": "application/json"
+        },
+        body: JSON.stringify({user_email: logged})
+      });
+      const  likeNew = await response.json();
+      setLikesCount(() => [...likesCount, likeNew]);
+      console.log(likeNew);
+      
+    } catch (error) {
+      console.log("like post error", error);
+    }
+  };
+
+  const deleteLike = async () => {
+    try {
+      const response = await fetch(`http://localhost:9292/prediction/like/${id}/${logged}`,{
+        method: "DELETE"
+      });
+      const  likeDelete = await response.json();
+      setLikesCount(() => likesCount.filter((like) => like.user_id != likeDelete.user_id)); 
+    } catch (error) {
+      console.log("like delete error", error);
+    }
   };
 
   return (
@@ -22,7 +70,7 @@ const Prediction = ({ score: { home, likes, away } }) => {
             className={like ? "text-[#44ff00]" : "text-white"}
             onClick={handleLike}
           />
-          <span className="text-white pl-2">{likesCount}</span>
+          <span className="text-white pl-2">{likesCount.length}</span>
         </div>
         <Typography color="white">
           <span>{home}</span>

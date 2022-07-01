@@ -1,9 +1,38 @@
-import React from "react";
-import image from "../assets/self.JPG";
+/* eslint-disable no-unused-vars */
+import React, {useState, useEffect} from "react";
+import image from "../assets/groot.jpg";
+import UserPredictions from "./UserPredictions";
+import { Typography } from "@material-tailwind/react";
+import { useAuth } from "./firebase";
 
 const Profile = () => {
+  const [predictions, setPredictions] = useState([]);
+  const currentUser = useAuth();
+  let logged = "";
+
+  if (currentUser) {
+    logged = currentUser.email;
+    console.log(logged);
+  }
+ 
+
+
+  useEffect(() => {   
+    console.log(logged);
+    const getPredictions = async () => {
+      try {
+        const response = await fetch(`http://localhost:9292/profile/${logged}`);
+        const  gamePredictions = await response.json();
+        console.log(gamePredictions);
+      } catch (error) {
+        console.log("predictions fetch error", error);
+      }
+    };
+    getPredictions(); 
+  },[]);
+
   return (
-    <div className="pt-40">
+    <div className="pt-40 container mx-auto">
       <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
         <div className="md:flex">
           <div className="md:shrink-0">
@@ -30,7 +59,14 @@ const Profile = () => {
           </div>
         </div>
       </div>
+
+      <div className="max-w-lg mx-auto mt-6">
+        <Typography className="text-[#44ff00]" >My Predictions:</Typography>
+        <UserPredictions />
+      </div>
     </div>
+    
+    
   );
 };
 
