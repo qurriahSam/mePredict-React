@@ -67,12 +67,12 @@ const Prediction = ({ score: { home, likes, away, id } }) => {
         <div>
           <FontAwesomeIcon
             icon={faThumbsUp}
-            className={like ? "text-[#44ff00]" : "text-white"}
+            className={like ? "text-[#44ff00]" : "text-[#C1C1C1]"}
             onClick={handleLike}
           />
-          <span className="text-white pl-2">{likesCount.length}</span>
+          <span className="text-white pl-2 dark:text-black">{likesCount.length}</span>
         </div>
-        <Typography color="white">
+        <Typography color="white" className="dark:text-black">
           <span>{home}</span>
           <span>-</span>
           <span>{away}</span>
