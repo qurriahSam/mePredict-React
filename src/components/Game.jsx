@@ -23,7 +23,7 @@ const Game = ({ games }) => {
   useEffect(() => {
     const getPredictions = async () => {
       try {
-        const response = await fetch(`http://localhost:9292/predictions/${gameId}`);
+        const response = await fetch(`https://mprdct.herokuapp.com/predictions/${gameId}`);
         const  gamePredictions = await response.json();
       
         if (gamePredictions.predictions.length > 0) {
