@@ -58,6 +58,7 @@ On your computer open terminal and run:
 ## Links
 
 - Live Site URL: [MePredict](https://mepredict-react.vercel.app/)
+- Backend repo link: [MePredict-backend](https://github.com/qurriahSam/ruby-back)
 
 [Go Back to the top](#MePredict)
 
