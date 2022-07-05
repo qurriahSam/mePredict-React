@@ -22,7 +22,7 @@ const Home = ({ games }) => {
 
   const loadGames =
     games.length === 0 ? (
-      <div className="text-white text-center min-h-screen flex justify-center align-middle">
+      <div className="text-white text-center min-h-screen flex justify-center align-middle dark:text-slate-700">
         Loading Games
       </div>
     ) : (
@@ -31,9 +31,9 @@ const Home = ({ games }) => {
   return (
     <div className="p-12">
       {currentUser ? (
-        <div className="text-white">logged in as: {currentUser.email} </div>
+        <div className="text-white dark:text-slate-700">logged in as: {currentUser.email} </div>
       ) : (
-        <div className="text-white">Not logged</div>
+        <div className="text-white dark:text-slate-700">Not logged</div>
       )}
       <Search search={search} setSearch={setSearch} />
       <div className="container mx-auto px-2">{loadGames}</div>
