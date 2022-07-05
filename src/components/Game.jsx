@@ -41,7 +41,7 @@ const Game = ({ games }) => {
   const addPrediction = ({home, away}) => {
     const sendPrediction = async () => {
       try {
-        const response = await fetch(`http://localhost:9292/prediction/${gameId}`,{
+        const response = await fetch(`https://mprdct.herokuapp.com/prediction/${gameId}`,{
           method: "POST",
           headers: {
             "Content-Type": "application/json",

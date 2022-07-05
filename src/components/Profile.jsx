@@ -21,7 +21,7 @@ const Profile = () => {
     console.log(logged);
     const getPredictions = async () => {
       try {
-        const response = await fetch(`http://localhost:9292/profile/${logged}`);
+        const response = await fetch(`https://mprdct.herokuapp.com/profile/${logged}`);
         const  gamePredictions = await response.json();
         console.log(gamePredictions);
       } catch (error) {

@@ -32,7 +32,7 @@ const Prediction = ({ score: { home, likes, away, id } }) => {
 
   const addLike = async () => {
     try {
-      const response = await fetch(`http://localhost:9292/prediction/like/${id}`,{
+      const response = await fetch(`https://mprdct.herokuapp.com/prediction/like/${id}`,{
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const Prediction = ({ score: { home, likes, away, id } }) => {
 
   const deleteLike = async () => {
     try {
-      const response = await fetch(`http://localhost:9292/prediction/like/${id}/${logged}`,{
+      const response = await fetch(`https://mprdct.herokuapp.com/prediction/like/${id}/${logged}`,{
         method: "DELETE"
       });
       const  likeDelete = await response.json();

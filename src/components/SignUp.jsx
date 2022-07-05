@@ -39,7 +39,7 @@ const SignUp = () => {
 
   const signup_to_db = async (email) => {
     try {
-      const url = "http://localhost:9292/mepredict/newuser";
+      const url = "https://mprdct.herokuapp.com/mepredict/newuser";
       const response = await fetch(url, {
         method: "POST",
         headers: {
