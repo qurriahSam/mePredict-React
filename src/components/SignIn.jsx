@@ -32,8 +32,8 @@ const SignIn = () => {
   };
 
   return (
-    <div className="text-white pt-12">
-      <Typography variant="h2" className="text-center pt-12">
+    <div className="text-white pt-12 dark:text-black">
+      <Typography variant="h2" className="text-center pt-14">
         Sign In
       </Typography>
       <div className="mt-8 w-96 mx-auto p-10">
@@ -43,7 +43,7 @@ const SignIn = () => {
             <Input
               name="email"
               type="email"
-              className="mb-4 text-[#fff]"
+              className="mb-4 text-[#fff] dark:text-black"
               value={logins.email}
               onChange={handleLogins}
             />
@@ -53,7 +53,7 @@ const SignIn = () => {
             <Input
               name="password"
               type="password"
-              className="mb-4 text-[#fff]"
+              className="mb-4 text-[#fff] dark:text-black"
               value={logins.password}
               onChange={handleLogins}
             />
