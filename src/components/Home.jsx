@@ -3,10 +3,14 @@ import React, { useState } from "react";
 import Search from "./Search";
 import Games from "./Games";
 import { useAuth } from "./firebase";
+import Filter from "./Filter";
 
 const Home = ({ games }) => {
   const [search, setSearch] = useState("");
+  const [league, setLeague] = useState("");
+  const [country, setCountry] = useState("");
   const currentUser = useAuth();
+  console.log(country);
  
   const showGames = games
     .filter((game) => {
@@ -18,7 +22,26 @@ const Home = ({ games }) => {
         return game;
       }
     })
-    .map((game) => <Games game={game} key={game.fixture.id} />);
+    .filter((game) => {
+      if (league === ""){
+        return game;
+      } else if (game.league.name.toLowerCase() === league.toLowerCase()) {
+        return game;
+      }
+    })
+    .filter((game) => {
+      if (country === ""){
+        return game;
+      } else if (game.league.country.toLowerCase() === country.toLowerCase()) {
+        console.log(game);
+        return game;
+      }
+    })
+    .map((game) => {
+      console.log(game.league.name);
+      return <Games game={game} key={game.fixture.id} />;
+    });
+
 
   const loadGames =
     games.length === 0 ? (
@@ -29,14 +52,20 @@ const Home = ({ games }) => {
       showGames
     );
   return (
-    <div className="p-12">
+    <div className="mt-16">
       {currentUser ? (
-        <div className="text-white dark:text-slate-700">logged in as: {currentUser.email} </div>
+        <div className="text-white pt-3 dark:text-slate-700">logged in as: {currentUser.email} </div>
       ) : (
-        <div className="text-white dark:text-slate-700">Not logged</div>
+        <div className="text-white pt-3 dark:text-slate-700">Not logged</div>
       )}
       <Search search={search} setSearch={setSearch} />
-      <div className="container mx-auto px-2">{loadGames}</div>
+      <div className="container mx-auto flex justify-center">
+        <div className="p-4 fixed left-4">
+          <Filter setLeague={setLeague} setCountry={setCountry}/>
+        </div> 
+        <div className="">{loadGames}</div>
+      </div>
+
     </div>
   );
 };

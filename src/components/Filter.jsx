@@ -1,15 +1,34 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Select, Option } from "@material-tailwind/react";
 
-const Filter = () => {
+const Filter = ({setLeague, setCountry}) => {
+  const handleLeagueChange = (e) => {
+    setLeague(e);
+  };
+  const handleCountryChange = (e) => {
+    setCountry(e);
+  };
   return (
     <div className="w-72">
-      <Select label="League">
-        <Option>Seria A</Option>
-        <Option>LaLiga</Option>
-        <Option>Ligue 1</Option>
-        <Option>English Premier League</Option>
+      <Select label="League" onChange={handleLeagueChange}>
+        <Option value="">All</Option>
+        <Option value="Serie A">Serie A</Option>
+        <Option value="Serie B">Serie B</Option>
+        <Option value="la liga">LaLiga</Option>
+        <Option value="UEFA Champions League">UEFA Champions League</Option>
+        <Option value="english premier league">English Premier League</Option>
       </Select>
+      <div className="pt-3">
+        <Select label="Country" onChange={handleCountryChange} >
+          <Option value="">All</Option>
+          <Option value="England">England</Option>
+          <Option value="Germany">Germany</Option>
+          <Option value="Spain">Spain</Option>
+          <Option value="world">World</Option>
+        </Select>
+      </div>
+
     </div>
   );
 };
