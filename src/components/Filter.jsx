@@ -2,7 +2,7 @@
 import React from "react";
 import { Select, Option } from "@material-tailwind/react";
 
-const Filter = ({setLeague, setCountry}) => {
+const Filter = ({ setLeague, setCountry }) => {
   const handleLeagueChange = (e) => {
     setLeague(e);
   };
@@ -10,17 +10,20 @@ const Filter = ({setLeague, setCountry}) => {
     setCountry(e);
   };
   return (
-    <div className="w-72">
-      <Select label="League" onChange={handleLeagueChange}>
-        <Option value="">All</Option>
-        <Option value="Serie A">Serie A</Option>
-        <Option value="Serie B">Serie B</Option>
-        <Option value="la liga">LaLiga</Option>
-        <Option value="UEFA Champions League">UEFA Champions League</Option>
-        <Option value="english premier league">English Premier League</Option>
-      </Select>
-      <div className="pt-3">
-        <Select label="Country" onChange={handleCountryChange} >
+    <div className="w-72 mx-auto md:flex justify-center">
+      <div className="p-1">
+        <Select label="League" onChange={handleLeagueChange}>
+          <Option value="">All</Option>
+          <Option value="Serie A">Serie A</Option>
+          <Option value="Serie B">Serie B</Option>
+          <Option value="la liga">LaLiga</Option>
+          <Option value="UEFA Champions League">UEFA Champions League</Option>
+          <Option value="english premier league">English Premier League</Option>
+        </Select>
+      </div>
+
+      <div className="p-1">
+        <Select label="Country" onChange={handleCountryChange}>
           <Option value="">All</Option>
           <Option value="England">England</Option>
           <Option value="Germany">Germany</Option>
@@ -28,7 +31,6 @@ const Filter = ({setLeague, setCountry}) => {
           <Option value="world">World</Option>
         </Select>
       </div>
-
     </div>
   );
 };
