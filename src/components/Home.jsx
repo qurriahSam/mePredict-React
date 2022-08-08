@@ -11,7 +11,7 @@ const Home = ({ games }) => {
   const [country, setCountry] = useState("");
   const currentUser = useAuth();
   console.log(country);
- 
+
   const showGames = games
     .filter((game) => {
       if (search === "") {
@@ -23,14 +23,14 @@ const Home = ({ games }) => {
       }
     })
     .filter((game) => {
-      if (league === ""){
+      if (league === "") {
         return game;
       } else if (game.league.name.toLowerCase() === league.toLowerCase()) {
         return game;
       }
     })
     .filter((game) => {
-      if (country === ""){
+      if (country === "") {
         return game;
       } else if (game.league.country.toLowerCase() === country.toLowerCase()) {
         console.log(game);
@@ -42,7 +42,6 @@ const Home = ({ games }) => {
       return <Games game={game} key={game.fixture.id} />;
     });
 
-
   const loadGames =
     games.length === 0 ? (
       <div className="text-white text-center min-h-screen flex justify-center align-middle dark:text-slate-700">
@@ -52,20 +51,23 @@ const Home = ({ games }) => {
       showGames
     );
   return (
-    <div className="mt-16">
+    <div className="pt-16 h-screen">
       {currentUser ? (
-        <div className="text-white pt-3 dark:text-slate-700">logged in as: {currentUser.email} </div>
+        <div className="text-white pt-3 dark:text-slate-700">
+          logged in as: {currentUser.email}{" "}
+        </div>
       ) : (
         <div className="text-white pt-3 dark:text-slate-700">Not logged</div>
       )}
       <Search search={search} setSearch={setSearch} />
-      <div className="container mx-auto flex justify-center">
-        <div className="p-4 fixed left-4">
-          <Filter setLeague={setLeague} setCountry={setCountry}/>
-        </div> 
-        <div className="">{loadGames}</div>
+      <div className="container mx-auto">
+        <div className="pb-3">
+          <Filter setLeague={setLeague} setCountry={setCountry} />
+        </div>
+        <div className="overflow-y-auto h-[34rem] sm:h-[30rem] md:h-[58vh] w-fit mx-auto no-scrollbar">
+          {loadGames}
+        </div>
       </div>
-
     </div>
   );
 };

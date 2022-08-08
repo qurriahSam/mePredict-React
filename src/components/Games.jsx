@@ -10,7 +10,10 @@ const Games = ({
   },
 }) => {
   return (
-    <div id={id.toString()} className=" max-w-lg mx-auto mt-3 px-6 py-2.5 text-white border-2 border-green-500/50 hover:border-[#44ff00] dark:text-black">
+    <div
+      id={id.toString()}
+      className=" max-w-lg m-3 px-6 py-2.5 text-white border-2 border-green-500/50 hover:border-[#44ff00] dark:text-black"
+    >
       <Link to={`${id}`} className="grid grid-cols-7">
         <div className="flex col-span-3 justify-end">
           <Typography className="font-medium pt-1 pr-2">{teams.home.name}</Typography>
