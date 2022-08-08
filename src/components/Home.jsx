@@ -64,7 +64,7 @@ const Home = ({ games }) => {
         <div className="pb-3">
           <Filter setLeague={setLeague} setCountry={setCountry} />
         </div>
-        <div className="overflow-y-auto h-[34rem] sm:h-[30rem] md:h-[58vh] w-fit mx-auto no-scrollbar">
+        <div className="overflow-y-auto h-[50vh] sm:h-[30rem] md:h-[58vh] w-fit mx-auto no-scrollbar">
           {loadGames}
         </div>
       </div>
