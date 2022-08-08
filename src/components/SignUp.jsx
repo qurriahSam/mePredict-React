@@ -44,9 +44,9 @@ const SignUp = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json"
+          Accept: "application/json",
         },
-        body: JSON.stringify({email: email})
+        body: JSON.stringify({ email: email }),
       });
       const user = await response.json();
       console.log("created in db", user);
