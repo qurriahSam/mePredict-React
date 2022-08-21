@@ -12,7 +12,7 @@ import {
 import { useAuth } from "./firebase";
 import { useNavigate } from "react-router-dom";
 
-const PredictForm = ({addPrediction}) => {
+const PredictForm = ({ addPrediction }) => {
   const [open, setOpen] = useState(false);
   const [prediction, setPrediction] = useState({
     home: "",
@@ -21,7 +21,7 @@ const PredictForm = ({addPrediction}) => {
   const auth = useAuth();
   let navigate = useNavigate();
 
-  const handleOpen = () => auth ? setOpen(!open) : navigate("/signin");
+  const handleOpen = () => (auth ? setOpen(!open) : navigate("/signin"));
 
   const handlePrediction = (e) => {
     const key = e.target.name;
@@ -40,6 +40,7 @@ const PredictForm = ({addPrediction}) => {
     } else {
       addPrediction(prediction);
       console.log("done");
+      handleOpen();
     }
   };
 
@@ -52,7 +53,7 @@ const PredictForm = ({addPrediction}) => {
       </div>
       <Dialog open={open} handler={handleOpen}>
         <DialogHeader>Score:</DialogHeader>
-        
+
         <DialogBody>
           <form className="flex justify-center" onSubmit={handleSubmit}>
             <Input
