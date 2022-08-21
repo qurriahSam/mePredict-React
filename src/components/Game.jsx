@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Typography } from "@material-tailwind/react";
 import Prediction from "./Prediction";
 import PredictForm from "./PredictForm";
 import { useParams } from "react-router-dom";
 import { useAuth } from "./firebase";
-//import { getScores } from "../scores";
 
 const Game = ({ games }) => {
   const [predictions, setPredictions] = useState([]);
@@ -13,7 +12,6 @@ const Game = ({ games }) => {
   const { gameId } = params;
   const currentUser = useAuth();
   let logged = "";
-  //const scores = getScores();
 
   if (currentUser) {
     logged = currentUser.email;
@@ -24,8 +22,8 @@ const Game = ({ games }) => {
     const getPredictions = async () => {
       try {
         const response = await fetch(`https://mprdct.herokuapp.com/predictions/${gameId}`);
-        const  gamePredictions = await response.json();
-      
+        const gamePredictions = await response.json();
+
         if (gamePredictions.predictions.length > 0) {
           console.log(gamePredictions);
           setPredictions(gamePredictions.predictions);
@@ -35,17 +33,17 @@ const Game = ({ games }) => {
       }
     };
     getPredictions();
-  },[]);
+  }, []);
 
   // eslint-disable-next-line no-unused-vars
-  const addPrediction = ({home, away}) => {
+  const addPrediction = ({ home, away }) => {
     const sendPrediction = async () => {
       try {
-        const response = await fetch(`https://mprdct.herokuapp.com/prediction/${gameId}`,{
+        const response = await fetch(`https://mprdct.herokuapp.com/prediction/${gameId}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "accept": "application/json"
+            accept: "application/json",
           },
           body: JSON.stringify({
             home_name: game.teams.home.name,
@@ -54,14 +52,12 @@ const Game = ({ games }) => {
             away_logo: game.teams.away.logo,
             home_score: home,
             away_score: away,
-            user_email: logged
-          })
+            user_email: logged,
+          }),
         });
-        const  newPrediction = await response.json();
+        const newPrediction = await response.json();
         console.log(newPrediction);
         setPredictions(() => [...predictions, newPrediction]);
-        
-      
       } catch (error) {
         console.log("new prediction error", error);
       }
@@ -72,7 +68,7 @@ const Game = ({ games }) => {
   const placePredictions = predictions.map((score) => <Prediction key={score.id} score={score} />);
 
   const game = games.find((game) => game.fixture.id === parseInt(gameId));
-  //console.log(game);
+
   return (
     <>
       <div className="container mx-auto pt-40 ">
@@ -92,7 +88,7 @@ const Game = ({ games }) => {
       <div className="grid sm:grid-cols-3 max-w-xs sm:max-w-md px-3 md:grid-cols-4 gap-4 md:max-w-2xl mt-24 mx-auto">
         {placePredictions}
       </div>
-      <PredictForm addPrediction = {addPrediction} />
+      <PredictForm addPrediction={addPrediction} />
     </>
   );
 };
