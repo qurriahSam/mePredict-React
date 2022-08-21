@@ -5,9 +5,9 @@ import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { useAuth, logout } from "./firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faSun } from "@fortawesome/free-solid-svg-icons";
+import { faSun } from "@fortawesome/free-solid-svg-icons";
 
-const MyNav = ({setLightMode, lightMode}) => {
+const MyNav = ({ setLightMode, lightMode }) => {
   const currentUser = useAuth();
 
   async function handleLogout() {
@@ -35,23 +35,26 @@ const MyNav = ({setLightMode, lightMode}) => {
         <div className="flex">
           {currentUser ? (
             <div>
-              <Link to="/profile">
+              {/*               <Link to="/profile">
                 <FontAwesomeIcon icon={faUser} className="cursor-pointer hover:animate-pulse" />
-              </Link>
+              </Link> */}
               <Button variant="text" className="text-[#fff] ml-5" size="md" onClick={handleLogout}>
-              Logout
+                Logout
               </Button>
             </div>
           ) : (
             <Link to="/signin">
               <Button variant="text" className="text-[#fff]" size="md">
-              Login
+                Login
               </Button>
             </Link>
           )}
-          <FontAwesomeIcon icon={faSun} className={lightMode ? "cursor-pointer p-3" : "cursor-pointer p-3 text-cyan-800"} onClick={handleLightMode} />
+          <FontAwesomeIcon
+            icon={faSun}
+            className={lightMode ? "cursor-pointer p-3" : "cursor-pointer p-3 text-cyan-800"}
+            onClick={handleLightMode}
+          />
         </div>
-
       </div>
     </Navbar>
   );
