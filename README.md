@@ -11,7 +11,7 @@
 
 ## Description
 
-This web app gives football fans a platform to share their football predictions.
+This web application provides a robust and dynamic platform for football enthusiasts to share and compare their predictions for daily games. Users can easily create and share their predictions, as well as engage with other users by liking on their predictions. The app is designed to be user-friendly and intuitive, with an emphasis on creating a rich and engaging experience for users. Its features and design elements make it a valuable resource for football fans who are looking to stay up-to-date on the latest developments in the world of football.
 
 ## Screenshot
 
